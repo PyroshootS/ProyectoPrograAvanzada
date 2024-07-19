@@ -1,0 +1,61 @@
+﻿@model HomeViewModel
+
+<div class="jumbotron">
+    <h1 class="display-4">Bienvenido a nuestra tienda en línea</h1>
+    <p class="lead">Descubre nuestras últimas ofertas y productos destacados.</p>
+    <hr class="my-4">
+    <p>Explora nuestras categorías para encontrar exactamente lo que necesitas.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Ver todas las categorías</a>
+</div>
+
+<h2>Productos Destacados</h2>
+<div class="row">
+    @foreach (var producto in Model.ProductosDestacados)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@producto.ImagenUrl" class="card-img-top" alt="@producto.Nombre">
+                <div class="card-body">
+                    <h5 class="card-title">@producto.Nombre</h5>
+                    <p class="card-text">@producto.DescripcionCorta</p>
+                    <p class="card-text"><strong>Precio: $@producto.Precio.ToString("F2")</strong></p>
+                    <a href="#" class="btn btn-primary">Ver Detalles</a>
+                    <a href="#" class="btn btn-success">Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Categorías Populares</h2>
+<div class="row">
+    @foreach (var categoria in Model.CategoriasPopulares)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@categoria.Nombre</h5>
+                    <p class="card-text">@categoria.Descripcion</p>
+                    <a href="#" class="btn btn-outline-primary">Explorar @categoria.Nombre</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Ofertas Especiales</h2>
+<div class="row">
+    @foreach (var oferta in Model.OfertasEspeciales)
+    {
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@oferta.Titulo</h5>
+                    <p class="card-text">@oferta.Descripcion</p>
+                    <p class="card-text"><strong>Descuento: @oferta.PorcentajeDescuento%</strong></p>
+                    <a href="#" class="btn btn-danger">Ver Oferta</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
